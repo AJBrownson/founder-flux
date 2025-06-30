@@ -137,7 +137,7 @@ export default function PlayerDashboard() {
           </div>
         </div>
 
-        {/* Metrics Grid */}
+         {/* Metrics Grid */}
         <div className="grid grid-cols-2 gap-4">
           {metrics.map((metric, index) => {
             const Icon = metric.icon;
