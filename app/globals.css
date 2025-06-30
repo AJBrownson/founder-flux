@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Founder Flux Apple-inspired Color Palette */
+  --space-gray: 88, 88, 92;
+  --mint-green: 52, 199, 89;
+  --salmon-red: 255, 59, 48;
+  --deep-indigo: 88, 86, 214;
+  --soft-white: 255, 255, 255;
+  --off-white: 248, 248, 248;
+  --warm-gray: 142, 142, 147;
+}
+
+@layer base {
+  :root {
+    --background: 248 248 248;
+    --foreground: 0 0% 3.9%;
+    --card: 255 255 255;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 255 255 255;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 88 86 214;
+    --primary-foreground: 255 255 255;
+    --secondary: 88 88 92;
+    --secondary-foreground: 255 255 255;
+    --muted: 142 142 147;
+    --muted-foreground: 88 88 92;
+    --accent: 52 199 89;
+    --accent-foreground: 255 255 255;
+    --destructive: 255 59 48;
+    --destructive-foreground: 255 255 255;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 88 86 214;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.75rem;
+  }
+  
+  .dark {
+    --background: 28 28 30;
+    --foreground: 255 255 255;
+    --card: 44 44 46;
+    --card-foreground: 255 255 255;
+    --popover: 44 44 46;
+    --popover-foreground: 255 255 255;
+    --primary: 88 86 214;
+    --primary-foreground: 255 255 255;
+    --secondary: 72 72 74;
+    --secondary-foreground: 255 255 255;
+    --muted: 142 142 147;
+    --muted-foreground: 174 174 178;
+    --accent: 52 199 89;
+    --accent-foreground: 255 255 255;
+    --destructive: 255 59 48;
+    --destructive-foreground: 255 255 255;
+    --border: 72 72 74;
+    --input: 72 72 74;
+    --ring: 88 86 214;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer components {
+  .game-tile {
+    @apply relative overflow-hidden rounded-xl transition-all duration-300 ease-out hover:scale-105 hover:shadow-lg cursor-pointer;
+  }
+  
+  .game-tile-active {
+    @apply ring-2 ring-primary shadow-lg scale-105;
+  }
+  
+  .phase-track {
+    @apply flex gap-4 py-6 px-4 overflow-x-auto;
+  }
+  
+  .metric-card {
+    @apply bg-card/80 backdrop-blur-sm rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow;
+  }
+  
+  .action-button {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200;
+  }
+  
+  .opportunity-card {
+    @apply bg-gradient-to-br from-accent/10 to-accent/5 border-accent/20;
+  }
+  
+  .event-card {
+    @apply bg-gradient-to-br from-destructive/10 to-destructive/5 border-destructive/20;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(var(--off-white));
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--warm-gray));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--space-gray));
+}
