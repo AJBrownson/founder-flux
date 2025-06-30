@@ -11,7 +11,8 @@ export default function Home() {
   const { isGameActive } = useGameStore();
 
   if (!isGameActive) {
-    return <StartScreen />;
+    // return <StartScreen />;
+    return <div>Start screen placeholder</div>;
   }
 
   return (
@@ -20,19 +21,20 @@ export default function Home() {
         <div className="grid lg:grid-cols-4 gap-6">
           {/* Game Board - Takes up most space */}
           <div className="lg:col-span-3">
-            <GameBoard />
+            {/* <GameBoard /> */}
           </div>
           
           {/* Right Sidebar - Player info and actions */}
           <div className="space-y-6">
-            <PlayerDashboard />
-            <GameActions />
+            {/* <PlayerDashboard /> */}
+            {/* <GameActions /> */}
           </div>
         </div>
       </div>
       
       {/* Card Modal */}
-      <CardModal />
+      {/* <CardModal /> */}
+      <div>Game active placeholder</div>
     </div>
   );
 }
