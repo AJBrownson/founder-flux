@@ -12,13 +12,13 @@ export default function Home() {
 
   if (!isGameActive) {
     // return <StartScreen />;
+    <div>start screen</div>
   }
 
   return (
     <div className="min-h-screen bg-background">
       <div className="container mx-auto p-6">
         <div className="grid lg:grid-cols-4 gap-6">
-          {/* Game Board - Takes up most space */}
           <div className="lg:col-span-3">
             {/* <GameBoard /> */}
           </div>
@@ -30,10 +30,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      
-      {/* Card Modal */}
       {/* <CardModal /> */}
-      <div>Game active placeholder</div>
     </div>
   );
 }
