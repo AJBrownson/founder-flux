@@ -24,7 +24,7 @@ export default function Home() {
           
           {/* Right Sidebar - Player info and actions */}
           <div className="space-y-6">
-            {/* <PlayerDashboard /> */}
+            <PlayerDashboard />
             <GameActions />
           </div>
         </div>
