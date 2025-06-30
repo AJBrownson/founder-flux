@@ -4,8 +4,7 @@ import dynamic from 'next/dynamic';
 import { useGameStore } from '@/lib/gameStore';
 import StartScreen from '@/components/StartScreen';
 import GameBoard from '@/components/GameBoard';
-// import PlayerDashboard from '@/components/PlayerDashboard';
-const PlayerDashboard = dynamic(() => import('@/components/PlayerDashboard'), { ssr: false });
+import PlayerDashboard from '@/components/PlayerDashboard';
 import GameActions from '@/components/GameActions';
 import CardModal from '@/components/CardModal';
 

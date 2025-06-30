@@ -5,12 +5,12 @@ import { useGameStore } from '@/lib/gameStore';
 import { Card } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
-import { 
-  DollarSign, 
-  TrendingUp, 
-  Battery, 
-  Heart, 
-  Users, 
+import {
+  DollarSign,
+  TrendingUp,
+  Battery,
+  Heart,
+  Users,
   Flame,
   Code,
   Palette,
@@ -19,24 +19,11 @@ import {
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
-const getArchetypeIcon = (archetype: string) => {
-  switch (archetype) {
-    case 'developer': return Code;
-    case 'designer': return Palette;
-    case 'growth-hacker': return Zap;
-    case 'operator': return Settings;
-    default: return Code;
-  }
-};
-
-const getArchetypeColor = (archetype: string) => {
-  switch (archetype) {
-    case 'developer': return 'bg-blue-500';
-    case 'designer': return 'bg-purple-500';
-    case 'growth-hacker': return 'bg-green-500';
-    case 'operator': return 'bg-orange-500';
-    default: return 'bg-gray-500';
-  }
+const archetypeMap = {
+  developer: { icon: Code, color: 'bg-blue-500' },
+  designer: { icon: Palette, color: 'bg-purple-500' },
+  'growth-hacker': { icon: Zap, color: 'bg-green-500' },
+  operator: { icon: Settings, color: 'bg-orange-500' }
 };
 
 export default function PlayerDashboard() {
@@ -51,8 +38,8 @@ export default function PlayerDashboard() {
     );
   }
 
-  const ArchetypeIcon = getArchetypeIcon(player.archetype);
-  const archetypeColor = getArchetypeColor(player.archetype);
+  const { icon: ArchetypeIcon = Code, color: archetypeColor = 'bg-gray-500' } =
+    archetypeMap[player.archetype] ?? {};
 
   const metrics = [
     {
@@ -92,6 +79,9 @@ export default function PlayerDashboard() {
     { name: 'Operations', value: player.skills.operations, max: 5 }
   ];
 
+  const formatPhase = (phase: string) =>
+    phase.split('-').map(w => w[0].toUpperCase() + w.slice(1)).join(' ');
+
   return (
     <div className="space-y-6">
       {/* Player Info */}
@@ -103,14 +93,12 @@ export default function PlayerDashboard() {
           <div>
             <h2 className="text-xl font-bold text-foreground">{player.name}</h2>
             <Badge variant="secondary" className="mt-1">
-              {player.archetype.split('-').map(word => 
-                word.charAt(0).toUpperCase() + word.slice(1)
-              ).join(' ')}
+              {formatPhase(player.archetype)}
             </Badge>
           </div>
         </div>
 
-        {/* Energy & Burn Rate */}
+        {/* Energy & Burn */}
         <div className="space-y-4 mb-6">
           <div>
             <div className="flex justify-between items-center mb-2">
@@ -120,10 +108,7 @@ export default function PlayerDashboard() {
               </div>
               <span className="text-sm text-muted-foreground">{player.stats.energy}/100</span>
             </div>
-            <Progress 
-              value={player.stats.energy} 
-              className="h-2"
-            />
+            <Progress value={player.stats.energy} className="h-2" />
           </div>
 
           <div>
@@ -137,7 +122,7 @@ export default function PlayerDashboard() {
           </div>
         </div>
 
-         {/* Metrics Grid */}
+        {/* Metrics */}
         <div className="grid grid-cols-2 gap-4">
           {metrics.map((metric, index) => {
             const Icon = metric.icon;
@@ -187,9 +172,7 @@ export default function PlayerDashboard() {
       <Card className="p-6">
         <h3 className="text-lg font-semibold text-foreground mb-2">Current Phase</h3>
         <Badge variant="outline" className="text-sm">
-          {player.phase.split('-').map(word => 
-            word.charAt(0).toUpperCase() + word.slice(1)
-          ).join(' ')} Phase
+          {formatPhase(player.phase)} Phase
         </Badge>
         <p className="text-sm text-muted-foreground mt-2">
           Position: {player.position + 1}
