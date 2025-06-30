@@ -5,7 +5,7 @@ import { Inter } from 'next/font/google';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Founder Flux - Startup Simulation Game',
+  title: 'Founder Flux - Startup Simulation Board Game',
   description: 'Build your startup empire through strategic decisions and smart gameplay',
 };
 
