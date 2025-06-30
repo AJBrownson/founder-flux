@@ -12,7 +12,6 @@ export default function Home() {
 
   if (!isGameActive) {
     // return <StartScreen />;
-    <div>start screen</div>
   }
 
   return (
