@@ -116,11 +116,16 @@ export default function CardModal() {
                             {effect.delay && ` (in ${effect.delay} turns)`}
                             {effect.duration && ` (for ${effect.duration} turns)`}
                           </span> */}
-                          <span className={color}>
+                          {/* <span className={color}>
   {effect.value > 0 ? '+' : ''}
   {effect.value} {effect.type}
   {effect.delay && <span> (in {effect.delay} turns)</span>}
   {effect.duration && <span> (for {effect.duration} turns)</span>}
+</span> */}
+                          <span className={color}>
+  {`${effect.value > 0 ? '+' : ''}${effect.value} ${effect.type}` +
+    (effect.delay ? ` (in ${effect.delay} turns)` : '') +
+    (effect.duration ? ` (for ${effect.duration} turns)` : '')}
 </span>
                         </div>
                       );
